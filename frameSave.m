@@ -1,6 +1,7 @@
 clear all;
 close all;
-filename='D:\work_matlab\bubblesSpeedJet\Q7.6f46P145cut_edit_cb.avi';
+filename='G:\workmatlab\Q7.6f46P145cut_edit_cb.avi';
+DirectoryPath ='G:\workmatlab\Q7.6f46P145FRAMES';
 vid = VideoReader(filename);
 vidWidth = vid.Width;
 vidHeight = vid.Height;
@@ -13,5 +14,6 @@ framesNumber=framesRange(2);
 frames = read(vid, framesRange);
 frames=vid2gray(frames,vidHeight ,vidWidth, vidnumOfFrames );
 for i=1:framesNumber
-imwrite(frames(:,:,i),'framesQ7.6f46P145cut_edit_cb', 'bmp');
+whereToStore=fullfile(DirectoryPath,['frame_num' num2str(i) '.bmp']);
+imwrite(frames(:,:,i), whereToStore);
 end
